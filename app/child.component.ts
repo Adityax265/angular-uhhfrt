@@ -1,21 +1,18 @@
-import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'child',
-  template: `
-    <h3>Child Component with {{childProp}}</h3>
-    <button (click)="fire()">Talk to parent</button>
-  `
+  template: `<h2>Child</h2>
+  <p>{{message}}</p>
+  <button (click)="sendToParent()" class="button">Send Message</button>`
 })
-export class ChildComponent implements OnChanges {
-  @Input() childProp;
-  @Output() toParent = new EventEmitter<string>();
+export class ChildComponent {
+  @Input("message") message: string;
+  messageFromChild: string = 'Hello From Child';
 
-  ngOnChanges(changes: SimpleChanges) {
-    console.log('in child changes with: ', changes);
-  }
+  @Output('messageFromChildEvent') messageFromChildEvent = new EventEmitter<string>();
 
-  fire() {
-    this.toParent.emit('Hi Parent');
+  sendToParent() {
+    this.messageFromChildEvent.emit(this.messageFromChild);
   }
 }

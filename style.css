@@ -1,0 +1,27 @@
+/* Add application styles & imports to this file! */
+
+parent,sibling {
+  width: 50%;
+  float: left;
+  height: 200px;
+  color: #fff;
+  box-sizing: border-box;
+  padding: 20px;
+}
+h2 {
+  margin: 0;
+}
+parent {
+  background-color: red;
+}
+sibling {
+  background-color:green;
+}
+child {
+  background-color:yellow;
+  height: 100px;
+  display: block;
+  color: black;
+  box-sizing: border-box;
+  padding: 20px;
+}
